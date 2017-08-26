@@ -1,0 +1,16 @@
+<html>
+    <head>
+    </head>
+
+    <body>
+        <h1> Menuizer </h1>
+
+        {% for r in restaurants %}
+            <p>{{ r.name }}</p>
+            <a href="#">Edit Restaurant</a>
+            <br>
+            <a href="#">Delete Restaurant</a>
+        {% endfor %}
+
+    </body>
+</html>

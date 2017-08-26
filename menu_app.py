@@ -16,42 +16,42 @@ item =  {'name':'Cheese Pizza','description':'made with fresh cheese','price':'$
 @app.route('/')
 @app.route('/restaurants')
 def showRestaurants():
-	return 'This page will show you all the restaurants'
+	return render_template('restaurants.html', restaurants=restaurants)
 
 
 @app.route('/restaurants/new')
 def newRestaurant():
-	return 'This page will let you add a new restaurant'
+	return render_template('newRestaurant.html')
 
 
 @app.route('/restaurants/<int:restaurant_id>/edit')
 def editRestaurant(restaurant_id):
-	return 'This page will let you edit a restaurant name'
+	return render_template('editRestaurant.html', restaurant=restaurants[restaurant_id])
 
 
 @app.route('/restaurants/<int:restaurant_id>/delete')
 def deleteRestaurant(restaurant_id):
-	return 'This page will let you delete a restaurant'	
+	return render_template('deleteRestaurant.html', restaurant=restaurants[restaurant_id])
 
 
 @app.route('/restaurants/<int:restaurant_id>/menu')
 def showMenu(restaurant_id):
-	return 'This page will show you the menu for a selected restaurant'
+	return render_template('menu.html', restaurant=restaurants[restaurant_id], items=items)
 
 
 @app.route('/restaurants/<int:restaurant_id>/menu/new')
 def newMenuItem(restaurant_id):
-	return 'This page will let you add a new menu item to a restaurant menu'
+	return render_template('newMenuItem.html', restaurant=restaurants[restaurant_id])
 
 
 @app.route('/restaurants/<int:restaurant_id>/menu/<int:menu_id>/edit')
 def editMenuItem(restaurant_id, menu_id):
-	return 'This page will let you edit a menu item name'
+	return render_template('editMenuItem.html', restaurant_id=restaurant_id, item=items[menu_id])
 
 
 @app.route('/restaurants/<int:restaurant_id>/menu/<int:menu_id>/delete')
 def deleteMenuItem(restaurant_id, menu_id):
-	return 'This page will let you delete a menu item'
+	return render_template('deleteMenuItem.html', restaurant_id=restaurant_id, item=items[menu_id])
 
 if __name__ == '__main__':
 	app.debug = True
