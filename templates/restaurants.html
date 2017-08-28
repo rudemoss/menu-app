@@ -6,11 +6,13 @@
         <h1> Menuizer </h1>
 
         {% for r in restaurants %}
-            <p>{{ r.name }}</p>
-            <a href="#">Edit Restaurant</a>
+            <p><a href="{{ url_for('showMenu', restaurant_id=r.id) }}">{{ r.name }}</a></p>
+            <a href="{{ url_for('editRestaurant', restaurant_id=r.id) }}">Edit</a>
             <br>
-            <a href="#">Delete Restaurant</a>
+            <a href="{{ url_for('deleteRestaurant', restaurant_id=r.id) }}">Delete</a>
         {% endfor %}
+
+        <p><a href="{{ url_for('newRestaurant') }}">Add a Restaurant</a></p>
 
     </body>
 </html>

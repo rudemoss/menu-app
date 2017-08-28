@@ -10,10 +10,13 @@
             <p>{{ i.description }}</p>
             <p>{{ i.price }}</p>
             <p>{{ i.course }}</p>
-            <a href="#">Edit Restaurant</a>
+            <a href="{{ url_for('editMenuItem', restaurant_id=restaurant.id, menu_id=i.id) }}">Edit</a>
             <br>
-            <a href="#">Delete Restaurant</a>
+            <a href="{{ url_for('deleteMenuItem', restaurant_id=restaurant.id, menu_id=i.id) }}">Delete</a>
         {% endfor %}
+
+        <p><a href="{{ url_for('newMenuItem', restaurant_id=restaurant.id) }}">Add new menu item</a></p>
+
 
     </body>
 </html>

@@ -1,0 +1,6 @@
+.vagrant/
+.DS_Store
+Vagrantfile
+database_setup*
+lotsoftables.py
+restaurantmenu.db
