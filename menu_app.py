@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, jsonify
+from flask import Flask, render_template, request, url_for, redirect, jsonify, flash
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from database_setup import Base, Restaurant, MenuItem
@@ -52,6 +52,7 @@ def newRestaurant():
 		newRestaurant = Restaurant(name = request.form['name'])
 		session.add(newRestaurant)
 		session.commit()
+		flash('New Restaurant Created')
 
 		return redirect(url_for('showRestaurants'))
 
@@ -72,6 +73,7 @@ def editRestaurant(restaurant_id):
 			editedRestaurant.name = request.form['name']
 		session.add(editedRestaurant)
 		session.commit()
+		flash('Restaurant Successfully Edited')
 
 		return redirect(url_for('showRestaurants'))
 	else:
@@ -90,6 +92,7 @@ def deleteRestaurant(restaurant_id):
 	if request.method =='POST':
 		session.delete(deletedRestaurant)
 		session.commit()
+		flash('Restaurant Successfully Deleted')
 
 		return redirect(url_for('showRestaurants'))
 	else:
@@ -122,6 +125,7 @@ def newMenuItem(restaurant_id):
 
 		session.add(newItem)
 		session.commit()
+		flash('Menu Item Created')
 
 		return redirect(url_for('showMenu', restaurant_id=restaurant_id))
 	else:
@@ -145,6 +149,7 @@ def editMenuItem(restaurant_id, menu_id):
 
 		session.add(editedItem)
 		session.commit()
+		flash('Menu Item Successfully Edited')
 
 		return redirect(url_for('showMenu', restaurant_id=restaurant_id))
 
@@ -163,6 +168,7 @@ def deleteMenuItem(restaurant_id, menu_id):
 	if request.method == 'POST':
 		session.delete(deletedItem)
 		session.commit()
+		flash('Menu Item Successfully Deleted')
 
 		return redirect(url_for('showMenu', restaurant_id=restaurant_id))
 
