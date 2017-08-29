@@ -16,7 +16,7 @@ on how fast your Internet connection is.
 virtual machine
 - Run `python database_setup.py` to initialize the database
 - Run `python menu_app.py` to start the program
-- Open a browser to `localhost:5000/restaurants` to start
+- Open a browser to `localhost:5000/restaurants`
 
 ## Authors
 
