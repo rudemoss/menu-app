@@ -24,5 +24,6 @@ virtual machine
 
 ## Acknowledgments
 
+* [OAuth code (42-155) from Udacity notes](https://github.com/udacity/ud330/tree/master/Lesson2)
 * Udacity Full Stack Developer program, staff, reviewers
 * Udacity discussion forums

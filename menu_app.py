@@ -38,7 +38,7 @@ def showLogin():
 
 	return render_template('login.html', STATE=state)
 
-
+## OAUTH CODE START ##
 # Revoke a current user's token and reset their login_session
 @app.route('/gconnect', methods=['POST'])
 def gconnect():
@@ -153,6 +153,7 @@ def gdisconnect():
         response = make_response(json.dumps('Failed to revoke token for given user.', 400))
         response.headers['Content-Type'] = 'application/json'
         return response
+## OAUTH CODE END ##
 
 
 # serialize function returns all values inside MenuItem or 
