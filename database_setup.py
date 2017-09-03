@@ -6,6 +6,33 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
+class UserID(Base):
+    __tablename__ = 'user_id'
+    
+    id = Column(
+        Integer, primary_key = True
+    ) 
+    name = Column(
+        String(80), nullable = False
+    )
+    email = Column(
+        String(80), nullable = False
+    )
+    picture = Column(
+        String(150), nullable = False
+    )
+
+    @property
+    def serialize(self):
+        return {
+            'name'  : self.name,
+            'id'    : self.id,
+            'email' : self.email,
+            'picture': self.picture
+        }
+          
+
+
 class Restaurant(Base):
     __tablename__ = 'restaurant'
 
@@ -15,6 +42,11 @@ class Restaurant(Base):
     id = Column(
         Integer, primary_key = True
     )
+
+    user_id = Column(
+        Integer, ForeignKey('user_id.id')
+    )
+    user_id = relationship(UserID)
 
     @property
     def serialize(self):
@@ -46,6 +78,10 @@ class MenuItem(Base):
         Integer, ForeignKey('restaurant.id')
     )
     restaurant = relationship(Restaurant)
+    
+    user_id = Column(
+        Integer, ForeignKey('user_id.id')
+    )
 
     @property
     def serialize(self):
