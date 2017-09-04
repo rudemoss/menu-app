@@ -1,4 +1,3 @@
-import sys
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
@@ -6,47 +5,38 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
-class UserID(Base):
-    __tablename__ = 'user_id'
+
+class User(Base):
+    __tablename__ = 'user'
     
     id = Column(
         Integer, primary_key = True
     ) 
     name = Column(
-        String(80), nullable = False
+        String(250), nullable = False
     )
     email = Column(
-        String(80), nullable = False
+        String(250), nullable = False
     )
     picture = Column(
-        String(150), nullable = False
-    )
-
-    @property
-    def serialize(self):
-        return {
-            'name'  : self.name,
-            'id'    : self.id,
-            'email' : self.email,
-            'picture': self.picture
-        }
-          
+        String(250)
+    )     
 
 
 class Restaurant(Base):
     __tablename__ = 'restaurant'
 
-    name = Column(
-        String(80), nullable = False
-    )
     id = Column(
         Integer, primary_key = True
     )
+    name = Column(
+        String(80), nullable = False
+    )
 
     user_id = Column(
-        Integer, ForeignKey('user_id.id')
+        Integer, ForeignKey('user.id')
     )
-    user_id = relationship(UserID)
+    user = relationship(User)
 
     @property
     def serialize(self):
@@ -72,7 +62,7 @@ class MenuItem(Base):
         String(250)
     )
     price = Column(
-        String(250)
+        String(8)
     )
     restaurant_id = Column(
         Integer, ForeignKey('restaurant.id')
@@ -80,8 +70,9 @@ class MenuItem(Base):
     restaurant = relationship(Restaurant)
     
     user_id = Column(
-        Integer, ForeignKey('user_id.id')
+        Integer, ForeignKey('user.id')
     )
+    user = relationship(User)
 
     @property
     def serialize(self):
@@ -94,6 +85,6 @@ class MenuItem(Base):
         }
 
 engine = create_engine(
-    'sqlite:///restaurantmenu.db')
+    'sqlite:///restaurantmenuwithusers.db')
 
 Base.metadata.create_all(engine)
