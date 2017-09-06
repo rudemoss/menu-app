@@ -309,7 +309,7 @@ def deleteRestaurant(restaurant_id):
 @app.route('/restaurants/<int:restaurant_id>/menu')
 def showMenu(restaurant_id):
 	restaurant = session.query(Restaurant).filter_by(
-		d=restaurant_id).one()
+		id=restaurant_id).one()
 	creator = getUserInfo(restaurant.user_id)
 	items = session.query(MenuItem).filter_by(
 		restaurant_id=restaurant_id).all()
