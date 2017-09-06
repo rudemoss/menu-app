@@ -90,7 +90,7 @@
 			console.log('Welcome!  Fetching your information.... ');
 			FB.api('/me', function(response) {
 				console.log('Successful login for: ' + response.name);
-					$.ajax({
+				$.ajax({
 					type: 'POST',
 					url: '/fbconnect?state={{STATE}}',
 					processData: false,
@@ -101,7 +101,7 @@
 						if (result) {
 							$('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
 							setTimeout(function() {
-								window.location.href = "/restaurant";
+								window.location.href = "/restaurants";
 							}, 4000);
 
 						} else {
