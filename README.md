@@ -1,20 +1,14 @@
 # Menu App
-A dynamic webapp using Python and Flask to build restaurant menus, with menu 
-items pulled from a SQLite database. User is able to add, edit, and delete
-database entries.
+This app Uses Flask and SQLAlchemy to build dynamic restaurant menus. Users can log in with Google OAuth 2.0 to add their own restaurants and apps. Tracks and respects user accounts, will not let a user edit or delete an entry that wasn't created by them. Written in Python.
 
 ## Prerequisites
-- Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-- Install [vagrant](https://www.vagrantup.com/downloads.html)
+Requires [Flask](http://flask.pocoo.org/), [SQLAlchemy](http://www.sqlalchemy.org/) and [oauth2client](https://github.com/google/oauth2client)
 
 ## Getting Started
 
-- After you've installed VirtualBox and Vagrant, run `vagrant up` from within
-the project directory. This may take quite a while (many minutes) depending 
-on how fast your Internet connection is.
-- When `vagrant up` is finished running, run `vagrant ssh` to log into the
-virtual machine
+- Clone or download and unzip the project files
 - Run `python database_setup.py` to initialize the database
+- (optional) Run `python lotsofmenus.py` to fill the database with pre-made data
 - Run `python menu_app.py` to start the program
 - Open a browser to `localhost:5000/restaurants`
 
@@ -24,6 +18,6 @@ virtual machine
 
 ## Acknowledgments
 
-* [OAuth code (42-155) from Udacity notes](https://github.com/udacity/ud330/tree/master/Lesson2)
+* [OAuth code from Udacity notes](https://github.com/udacity/ud330/tree/master/Lesson2)
 * Udacity Full Stack Developer program, staff, reviewers
 * Udacity discussion forums
