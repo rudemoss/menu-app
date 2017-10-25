@@ -11,6 +11,7 @@ Requires [Flask](http://flask.pocoo.org/), [SQLAlchemy](http://www.sqlalchemy.or
 - (optional) Run `python lotsofmenus.py` to fill the database with pre-made data
 - Run `python menu_app.py` to start the program
 - Open a browser to `localhost:5000/restaurants`
+- Login with Google OAuth2.0 to add/edit restaurants and menu items
 
 ## Authors
 
